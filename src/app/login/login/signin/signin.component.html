@@ -1,0 +1,31 @@
+<div class="container">
+  <div>
+    <h1>Welcome</h1>
+    <h3>Enter your username and password</h3>
+  </div>
+  <form
+    class="sign-in-container"
+    [formGroup]="signinForm"
+    (ngSubmit)="submitForm()"
+  >
+    <div class="sign-in-input">
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        formControlName="username"
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </div>
+    <div>
+      <button class="btn-sign-in">Sign In</button>
+      <a routerLink="../signup">Create an account</a>
+    </div>
+    <div class="invalid" *ngIf="valid | async">Invalid Credentials</div>
+  </form>
+</div>

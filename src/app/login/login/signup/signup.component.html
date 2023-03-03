@@ -1,0 +1,52 @@
+<div class="container">
+  <div>
+    <h1>Welcome</h1>
+    <h3>Create your account</h3>
+  </div>
+  <form
+    class="sign-in-container"
+    [formGroup]="signupForm"
+    (ngSubmit)="submitForm()"
+  >
+    <div class="sign-in-input">
+      <input
+        type="text"
+        name="firstname"
+        placeholder="Firstname"
+        formControlName="firstName"
+      />
+      <input
+        type="text"
+        name="lastname"
+        placeholder="Lastname"
+        formControlName="lastName"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        formControlName="username"
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </div>
+    <div>
+      <button class="btn-sign-in" type="submit">Sign Up</button>
+      <hr />
+      <p>Already have an account sign in</p>
+      <button class="btn-sign-in2" routerLink="../signin" type="button">
+        Sign In
+      </button>
+    </div>
+  </form>
+</div>

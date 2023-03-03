@@ -1,18 +1,27 @@
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { LoggerService } from './login/logger.service';
+import { HttpClientModule } from '@angular/common/http';
+
+import { LoggedGuardService } from './guards/logged-guard.service';
+import { ReactiveFormsModule } from '@angular/forms';
+
+export const API_URL = 'https://dummyjson.com';
 
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [
+    LoggerService,
+    AuthGuardService,
+    LoggedGuardService,
+    ReactiveFormsModule,
+    { provide: 'API_URL', useValue: API_URL },
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

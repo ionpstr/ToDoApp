@@ -1,0 +1,35 @@
+<div class="todo-main">
+  <!-- <div class="todo-container-low" droppable>
+      <app-todo
+        *ngFor="let todo of items | async"
+        [todo]="todo"
+        draggable
+        [dragData]="todo"
+      ></app-todo>
+    </div> -->
+
+  <div class="todo-container-low" droppable (onDrop)="onItemDrop($event, 1)">
+    <app-todo
+      *ngFor="let todo of itemLow"
+      [todo]="todo"
+      draggable
+      [dragData]="todo"
+    ></app-todo>
+  </div>
+  <div class="todo-container-medium" droppable (onDrop)="onItemDrop($event, 2)">
+    <app-todo
+      *ngFor="let todo of itemMedium"
+      [todo]="todo"
+      draggable
+      [dragData]="todo"
+    ></app-todo>
+  </div>
+  <div class="todo-container-high" droppable (onDrop)="onItemDrop($event, 3)">
+    <app-todo
+      *ngFor="let todo of itemHigh"
+      [todo]="todo"
+      draggable
+      [dragData]="todo"
+    ></app-todo>
+  </div>
+</div>
