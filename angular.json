@@ -25,6 +25,7 @@
             "inlineStyleLanguage": "less",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.less",
               "node_modules/ng-drag-drop/style.css"
             ],

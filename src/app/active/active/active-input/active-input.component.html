@@ -1,0 +1,56 @@
+<div>
+  <form [formGroup]="myForm" (ngSubmit)="handleSubmit(myForm)">
+    <div class="form-floating">
+      <input
+        maxlength="32"
+        class="form-control"
+        id="body"
+        formControlName="todo"
+        style="min-height: 60px; max-height: 150px"
+        placeholder="todo text"
+      />
+      <label for="body">Task</label>
+    </div>
+    <div class="form-floating">
+      <select
+        class="form-select"
+        id="floatingSelect"
+        aria-label="Floating label select example"
+        formControlName="priority"
+        type="number"
+      >
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>
+      </select>
+      <label for="floatingSelect">Priority level</label>
+    </div>
+    <div>
+      <div class="time-container">
+        <div class="time-picker">
+          <ngb-timepicker formControlName="from"></ngb-timepicker>
+          <span>to</span>
+          <ngb-timepicker formControlName="to"></ngb-timepicker>
+        </div>
+        <div class="input-group input">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            formControlName="date"
+            ngbDatepicker
+            #d="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary bi bi-calendar3"
+            (click)="d.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" style="width: 100px">
+      {{ edit ? "Edit" : "New Task" }}
+    </button>
+  </form>
+</div>

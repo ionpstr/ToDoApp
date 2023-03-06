@@ -9,12 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoggedGuardService } from './guards/logged-guard.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const API_URL = 'https://dummyjson.com';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [
     LoggerService,
     AuthGuardService,

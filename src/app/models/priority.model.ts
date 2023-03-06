@@ -1,1 +1,5 @@
-export type Priority = 1 | 2 | 3;
+export enum Priority {
+  low = 1,
+  medium = 2,
+  high = 3,
+}

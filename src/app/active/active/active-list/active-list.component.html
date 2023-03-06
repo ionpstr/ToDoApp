@@ -8,28 +8,49 @@
       ></app-todo>
     </div> -->
 
-  <div class="todo-container-low" droppable (onDrop)="onItemDrop($event, 1)">
+  <div
+    class="todo-container-low"
+    droppable
+    (onDrop)="onItemDrop($event, Priority.low)"
+  >
     <app-todo
       *ngFor="let todo of itemLow"
       [todo]="todo"
       draggable
       [dragData]="todo"
+      (onComplete)="handleComplete(todo)"
+      (onDelete)="handleDelete(todo)"
+      (onEdit)="handleEdit(todo)"
     ></app-todo>
   </div>
-  <div class="todo-container-medium" droppable (onDrop)="onItemDrop($event, 2)">
+  <div
+    class="todo-container-medium"
+    droppable
+    (onDrop)="onItemDrop($event, Priority.medium)"
+  >
     <app-todo
       *ngFor="let todo of itemMedium"
       [todo]="todo"
       draggable
       [dragData]="todo"
+      (onComplete)="handleComplete(todo)"
+      (onDelete)="handleDelete(todo)"
+      (onEdit)="handleEdit(todo)"
     ></app-todo>
   </div>
-  <div class="todo-container-high" droppable (onDrop)="onItemDrop($event, 3)">
+  <div
+    class="todo-container-high"
+    droppable
+    (onDrop)="onItemDrop($event, Priority.high)"
+  >
     <app-todo
       *ngFor="let todo of itemHigh"
       [todo]="todo"
       draggable
       [dragData]="todo"
+      (onComplete)="handleComplete(todo)"
+      (onDelete)="handleDelete(todo)"
+      (onEdit)="handleEdit(todo)"
     ></app-todo>
   </div>
 </div>

@@ -1,1 +1,15 @@
-<app-active-list [arr]="[todoItem]"></app-active-list>
+<div class="active-container">
+  <div>
+    <app-active-input
+      (newTask)="addItem($event)"
+      [item]="item"
+    ></app-active-input>
+    <hr style="opacity: 0.2" />
+  </div>
+  <app-active-list
+    [arr]="items"
+    (updateElement)="updateElement($event)"
+    (deleteElement)="deleteElement($event)"
+    (editElement)="editElement($event)"
+  ></app-active-list>
+</div>

@@ -1,5 +1,23 @@
-<div class="tab-container">
-  <p>{{ todo.date | date }}</p>
-  <h1>{{ todo.todo }}</h1>
-  <h3>{{ todo.time | date : "d/MM h:mm" }}</h3>
+<div class="tab">
+  <div class="tab-menu">
+    <i class="bi bi-arrow-up-right-circle" (click)="completeTask()"></i>
+    <i class="bi bi-pencil-square" (click)="editTask()"></i>
+    <i class="bi bi-trash" (click)="deleteTask()"></i>
+  </div>
+  <div class="tab-container">
+    <p>{{ todo.createdAt | date }}</p>
+    <div class="todo">
+      <h1>{{ todo.todo }}</h1>
+    </div>
+    <div class="time">
+      <h3 *ngIf="todo.from && todo.to" style="display: inline">
+        {{ todo.from.hour }}:{{ todo.from.minute }}-{{ todo.to.hour }}:{{
+          todo.to.minute
+        }}
+      </h3>
+      <h3 *ngIf="todo.date" style="display: inline">
+        {{ todo.date | date }}
+      </h3>
+    </div>
+  </div>
 </div>

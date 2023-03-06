@@ -15,5 +15,18 @@
 }
 .todo-main {
   display: flex;
-  gap: 15px;
+  gap: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 20px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(139, 139, 139);
+  border-radius: 10px;
+}
+:host {
+  overflow-y: scroll;
+  height: 50%;
 }

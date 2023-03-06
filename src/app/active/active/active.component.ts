@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { TodoServiceService } from 'src/app/home/todo-service.service';
 import { Item } from 'src/app/models/item.model';
-import { Observable, tap } from 'rxjs';
+import { LoggerService } from 'src/app/login/logger.service';
 
 @Component({
   selector: 'app-active',
@@ -9,21 +8,40 @@ import { Observable, tap } from 'rxjs';
   styleUrls: ['./active.component.less'],
 })
 export class ActiveComponent {
-  todoItem: Item = {
-    id: 0,
-    todo: 'Play csgo tonight with friends',
-    completed: false,
-    userId: 1,
-    date: new Date(),
-    priority: 1,
-    time: new Date('December 17, 2024 03:24:00'),
-  };
+  items: Item[] = [];
+  item: Item | null = null;
 
-  items: Observable<Item[]>;
+  constructor(private logger: LoggerService) {}
 
-  constructor(private todoService: TodoServiceService) {
-    this.items = this.todoService
-      .getAllTodos()
-      .pipe(tap((item) => console.log(item)));
+  addItem(item: Item) {
+    const i = new Item({
+      todo: item.todo,
+      from: item.from,
+      to: item.to,
+      date: item.date,
+      priority: item.priority,
+      userId: this.logger.getUser.id,
+      createdAt: new Date(),
+      completed: false,
+    });
+    this.items = [...this.items, i];
+    console.log(this.items);
+  }
+
+  updateElement(item: Item) {
+    this.items[this.items.indexOf(item)] = item;
+    this.items = [...this.items.filter((item) => !item.priority)];
+  }
+
+  deleteElement(item: Item) {
+    this.items = [
+      ...this.items.slice(0, this.items.indexOf(item)),
+      ...this.items.slice(this.items.indexOf(item) + 1),
+    ];
+  }
+
+  editElement(item: Item) {
+    this.item = item;
+    this.deleteElement(item);
   }
 }

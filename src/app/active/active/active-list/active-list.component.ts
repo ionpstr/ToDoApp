@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { Priority } from 'src/app/models/priority.model';
 
@@ -12,22 +12,38 @@ export class ActiveListComponent {
   itemMedium: Item[] = [];
   itemHigh: Item[] = [];
 
-  @Input() arr: Item[] = [];
+  @Input() set arr(arr: Item[]) {
+    this.itemLow = arr.filter((val) => val.priority === Priority.low);
+    this.itemMedium = arr.filter((val) => val.priority === Priority.medium);
+    this.itemHigh = arr.filter((val) => val.priority === Priority.high);
+  }
+  @Output() updateElement: EventEmitter<Item> = new EventEmitter();
+  @Output() deleteElement: EventEmitter<Item> = new EventEmitter();
+  @Output() editElement: EventEmitter<Item> = new EventEmitter();
 
   onItemDrop(item: any, priority: Priority) {
     this.changePriority(item.dragData, priority);
-    this.itemLow = this.arr.filter((val) => val.priority === 1).slice();
-    this.itemMedium = this.arr.filter((val) => val.priority === 2).slice();
-    this.itemHigh = this.arr.filter((val) => val.priority === 3).slice();
   }
 
   changePriority(el: Item, p: Priority) {
     el.priority = p;
+    this.updateElement.emit(el);
   }
 
-  ngOnInit() {
-    this.itemLow = this.arr.filter((val) => val.priority === 1).slice();
-    this.itemMedium = this.arr.filter((val) => val.priority === 2).slice();
-    this.itemHigh = this.arr.filter((val) => val.priority === 3).slice();
+  get Priority() {
+    return Priority;
+  }
+
+  handleComplete(item: Item) {
+    item.completed = true;
+    this.updateElement.emit(item);
+  }
+
+  handleDelete(item: Item) {
+    this.deleteElement.emit(item);
+  }
+
+  handleEdit(item: Item) {
+    this.editElement.emit(item);
   }
 }
