@@ -33,6 +33,8 @@
         (onComplete)="handleComplete(todo)"
         (onDelete)="handleDelete(todo)"
         (onEdit)="handleEdit(todo)"
+        appTaskColor
+        [priority]="todo.priority ? todo.priority : null"
       ></app-todo>
     </div>
   </div>
@@ -42,9 +44,24 @@
       <div ngbDropdown class="d-inline-block">
         <span id="dropdownBasic1" ngbDropdownToggle></span>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>Date</button>
-          <button ngbDropdownItem>Alphabetic</button>
-          <button ngbDropdownItem>Recent</button>
+          <button
+            ngbDropdownItem
+            (click)="itemMedium = filter(itemMedium, 'date')"
+          >
+            Date
+          </button>
+          <button
+            ngbDropdownItem
+            (click)="itemMedium = filter(itemMedium, 'todo')"
+          >
+            Alphabetic
+          </button>
+          <button
+            ngbDropdownItem
+            (click)="itemMedium = filter(itemMedium, 'createdAt')"
+          >
+            Recent
+          </button>
         </div>
       </div>
     </div>
@@ -61,6 +78,8 @@
         (onComplete)="handleComplete(todo)"
         (onDelete)="handleDelete(todo)"
         (onEdit)="handleEdit(todo)"
+        appTaskColor
+        [priority]="todo.priority ? todo.priority : null"
       ></app-todo>
     </div>
   </div>
@@ -70,9 +89,18 @@
       <div ngbDropdown class="d-inline-block">
         <span id="dropdownBasic1" ngbDropdownToggle></span>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>Date</button>
-          <button ngbDropdownItem>Alphabetic</button>
-          <button ngbDropdownItem>Recent</button>
+          <button ngbDropdownItem (click)="itemHigh = filter(itemHigh, 'date')">
+            Date
+          </button>
+          <button ngbDropdownItem (click)="itemHigh = filter(itemHigh, 'todo')">
+            Alphabetic
+          </button>
+          <button
+            ngbDropdownItem
+            (click)="itemHigh = filter(itemHigh, 'createdAt')"
+          >
+            Recent
+          </button>
         </div>
       </div>
     </div>
@@ -86,6 +114,45 @@
         [todo]="todo"
         draggable
         [dragData]="todo"
+        (onComplete)="handleComplete(todo)"
+        (onDelete)="handleDelete(todo)"
+        (onEdit)="handleEdit(todo)"
+        appTaskColor
+        [priority]="todo.priority ? todo.priority : null"
+      ></app-todo>
+    </div>
+  </div>
+  <div>
+    <div class="menu">
+      <h4>Completed</h4>
+      <div ngbDropdown class="d-inline-block">
+        <span id="dropdownBasic1" ngbDropdownToggle></span>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button
+            ngbDropdownItem
+            (click)="completed = filter(completed, 'date')"
+          >
+            Date
+          </button>
+          <button
+            ngbDropdownItem
+            (click)="completed = filter(completed, 'todo')"
+          >
+            Alphabetic
+          </button>
+          <button
+            ngbDropdownItem
+            (click)="completed = filter(completed, 'createdAt')"
+          >
+            Recent
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="todo-container-high">
+      <app-todo
+        *ngFor="let todo of completed"
+        [todo]="todo"
         (onComplete)="handleComplete(todo)"
         (onDelete)="handleDelete(todo)"
         (onEdit)="handleEdit(todo)"

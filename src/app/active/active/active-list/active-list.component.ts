@@ -12,11 +12,19 @@ export class ActiveListComponent {
   itemLow: Item[] = [];
   itemMedium: Item[] = [];
   itemHigh: Item[] = [];
+  completed: Item[] = [];
 
   @Input() set arr(arr: Item[]) {
-    this.itemLow = arr.filter((val) => val.priority === Priority.low);
-    this.itemMedium = arr.filter((val) => val.priority === Priority.medium);
-    this.itemHigh = arr.filter((val) => val.priority === Priority.high);
+    this.itemLow = arr.filter(
+      (val) => val.priority === Priority.low && !val.completed
+    );
+    this.itemMedium = arr.filter(
+      (val) => val.priority === Priority.medium && !val.completed
+    );
+    this.itemHigh = arr.filter(
+      (val) => val.priority === Priority.high && !val.completed
+    );
+    this.completed = arr.filter((val) => val.completed);
   }
   @Output() updateElement: EventEmitter<Item> = new EventEmitter();
   @Output() deleteElement: EventEmitter<Item> = new EventEmitter();
