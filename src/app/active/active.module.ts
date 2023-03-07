@@ -9,6 +9,7 @@ import { ActiveInputComponent } from './active/active-input/active-input.compone
 import {
   NgbTimepickerModule,
   NgbDatepickerModule,
+  NgbDropdownModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgDragDropModule.forRoot(),
     NgbTimepickerModule,
     ReactiveFormsModule,
+    NgbDropdownModule,
     NgbDatepickerModule,
   ],
 })

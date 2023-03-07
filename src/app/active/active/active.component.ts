@@ -30,7 +30,7 @@ export class ActiveComponent {
 
   updateElement(item: Item) {
     this.items[this.items.indexOf(item)] = item;
-    this.items = [...this.items.filter((item) => !item.priority)];
+    this.items = [...this.items.filter((item) => !item.completed)];
   }
 
   deleteElement(item: Item) {

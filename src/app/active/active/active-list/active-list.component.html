@@ -1,56 +1,95 @@
 <div class="todo-main">
-  <!-- <div class="todo-container-low" droppable>
+  <div>
+    <div class="menu">
+      <h4>Low</h4>
+      <div ngbDropdown class="d-inline-block">
+        <span id="dropdownBasic1" ngbDropdownToggle></span>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="itemLow = filter(itemLow, 'date')">
+            Date
+          </button>
+          <button ngbDropdownItem (click)="itemLow = filter(itemLow, 'todo')">
+            Alphabetic
+          </button>
+          <button
+            ngbDropdownItem
+            (click)="itemLow = filter(itemLow, 'createdAt')"
+          >
+            Recent
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="todo-container-low"
+      droppable
+      (onDrop)="onItemDrop($event, Priority.low)"
+    >
       <app-todo
-        *ngFor="let todo of items | async"
+        *ngFor="let todo of itemLow"
         [todo]="todo"
         draggable
         [dragData]="todo"
+        (onComplete)="handleComplete(todo)"
+        (onDelete)="handleDelete(todo)"
+        (onEdit)="handleEdit(todo)"
       ></app-todo>
-    </div> -->
-
-  <div
-    class="todo-container-low"
-    droppable
-    (onDrop)="onItemDrop($event, Priority.low)"
-  >
-    <app-todo
-      *ngFor="let todo of itemLow"
-      [todo]="todo"
-      draggable
-      [dragData]="todo"
-      (onComplete)="handleComplete(todo)"
-      (onDelete)="handleDelete(todo)"
-      (onEdit)="handleEdit(todo)"
-    ></app-todo>
+    </div>
   </div>
-  <div
-    class="todo-container-medium"
-    droppable
-    (onDrop)="onItemDrop($event, Priority.medium)"
-  >
-    <app-todo
-      *ngFor="let todo of itemMedium"
-      [todo]="todo"
-      draggable
-      [dragData]="todo"
-      (onComplete)="handleComplete(todo)"
-      (onDelete)="handleDelete(todo)"
-      (onEdit)="handleEdit(todo)"
-    ></app-todo>
+  <div>
+    <div class="menu">
+      <h4>Medium</h4>
+      <div ngbDropdown class="d-inline-block">
+        <span id="dropdownBasic1" ngbDropdownToggle></span>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>Date</button>
+          <button ngbDropdownItem>Alphabetic</button>
+          <button ngbDropdownItem>Recent</button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="todo-container-medium"
+      droppable
+      (onDrop)="onItemDrop($event, Priority.medium)"
+    >
+      <app-todo
+        *ngFor="let todo of itemMedium"
+        [todo]="todo"
+        draggable
+        [dragData]="todo"
+        (onComplete)="handleComplete(todo)"
+        (onDelete)="handleDelete(todo)"
+        (onEdit)="handleEdit(todo)"
+      ></app-todo>
+    </div>
   </div>
-  <div
-    class="todo-container-high"
-    droppable
-    (onDrop)="onItemDrop($event, Priority.high)"
-  >
-    <app-todo
-      *ngFor="let todo of itemHigh"
-      [todo]="todo"
-      draggable
-      [dragData]="todo"
-      (onComplete)="handleComplete(todo)"
-      (onDelete)="handleDelete(todo)"
-      (onEdit)="handleEdit(todo)"
-    ></app-todo>
+  <div>
+    <div class="menu">
+      <h4>High</h4>
+      <div ngbDropdown class="d-inline-block">
+        <span id="dropdownBasic1" ngbDropdownToggle></span>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>Date</button>
+          <button ngbDropdownItem>Alphabetic</button>
+          <button ngbDropdownItem>Recent</button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="todo-container-high"
+      droppable
+      (onDrop)="onItemDrop($event, Priority.high)"
+    >
+      <app-todo
+        *ngFor="let todo of itemHigh"
+        [todo]="todo"
+        draggable
+        [dragData]="todo"
+        (onComplete)="handleComplete(todo)"
+        (onDelete)="handleDelete(todo)"
+        (onEdit)="handleEdit(todo)"
+      ></app-todo>
+    </div>
   </div>
 </div>

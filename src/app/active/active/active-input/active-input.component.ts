@@ -77,7 +77,7 @@ export class ActiveInputComponent {
       });
     }
 
-    this.myForm.reset();
+    this.updateForm(this.myForm, this.clearItem);
     this.edit = false;
   }
 }

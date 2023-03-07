@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 15px;
   width: 280px;
+  height: 50vh;
 }
 .todo-container-low {
   .todo-container();
@@ -16,6 +17,7 @@
 .todo-main {
   display: flex;
   gap: 5px;
+  overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {
@@ -26,7 +28,24 @@
   background: rgb(139, 139, 139);
   border-radius: 10px;
 }
-:host {
-  overflow-y: scroll;
-  height: 50%;
+.menu {
+  padding: 0 15px;
+  background-color: rgb(218, 218, 218);
+  height: 40px;
+  border-radius: 10px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  h4 {
+    padding: 0;
+    margin: 0;
+    display: inline;
+    font-size: medium;
+  }
+}
+span {
+  padding: 0 7px;
+  cursor: pointer;
 }

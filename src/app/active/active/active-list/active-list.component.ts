@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { Priority } from 'src/app/models/priority.model';
+import { orderBy } from 'lodash';
 
 @Component({
   selector: 'app-active-list',
@@ -45,5 +46,9 @@ export class ActiveListComponent {
 
   handleEdit(item: Item) {
     this.editElement.emit(item);
+  }
+
+  filter(arr: Item[], filterBy: string) {
+    return orderBy(arr, filterBy);
   }
 }
