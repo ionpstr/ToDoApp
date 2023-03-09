@@ -7,7 +7,7 @@ export class Item {
   completed?: boolean;
   userId?: string | null;
   createdAt?: Date;
-  date?: Date | null;
+  date: Date | null;
   from?: Time | null;
   to?: Time | null;
   priority?: Priority;

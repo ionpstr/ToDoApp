@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { LoggerService } from 'src/app/login/logger.service';
 import { TodoServiceService } from 'src/app/home/todo-service.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-active',
@@ -10,13 +11,15 @@ import { TodoServiceService } from 'src/app/home/todo-service.service';
 })
 export class ActiveComponent {
   items: Item[] = [];
-  item: Item | null = null;
-
+  item!: Item;
+  sub: Subscription;
   constructor(
     private logger: LoggerService,
     private taskService: TodoServiceService
   ) {
-    this.items = this.taskService.getTasks();
+    this.sub = this.taskService
+      .getTasks()
+      .subscribe((val) => (this.items = val));
   }
 
   addItem(item: Item) {
@@ -30,8 +33,8 @@ export class ActiveComponent {
       createdAt: new Date(),
       completed: false,
     });
-    this.items = [...this.items, i];
-    this.taskService.setTasks(this.items);
+
+    this.taskService.setTasks([...this.items, i]);
   }
 
   updateElement(item: Item) {
@@ -51,6 +54,9 @@ export class ActiveComponent {
   editElement(item: Item) {
     this.item = item;
     this.deleteElement(item);
-    this.taskService.setTasks(this.items);
+  }
+
+  onDestroy() {
+    this.sub.unsubscribe();
   }
 }

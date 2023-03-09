@@ -1,0 +1,33 @@
+<div class="chart-container">
+  <ngx-charts-pie-grid
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="single"
+    *ngIf="single"
+  >
+  </ngx-charts-pie-grid>
+  <ngx-charts-bar-horizontal-normalized
+    *ngIf="multi"
+    [view]="viewBar"
+    [scheme]="colorSchemeBar"
+    [results]="multi"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+  >
+  </ngx-charts-bar-horizontal-normalized>
+</div>
+<div class="time-container">
+  <ngx-charts-number-card
+    *ngIf="singleTime"
+    [view]="view"
+    [scheme]="colorSchemeTime"
+    [results]="singleTime"
+    [cardColor]="cardColor"
+  >
+  </ngx-charts-number-card>
+</div>

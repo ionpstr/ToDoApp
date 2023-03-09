@@ -1,21 +1,23 @@
-<div class="home-container">
-  <nav>
-    <div>
-      <div class="avatar-container" (click)="openLogout()">
-        <img [src]="user.image" alt="avatar" class="avatar" />
-        <div class="user-container">
-          <h1>{{ user.firstName }} {{ user.lastName }}</h1>
-          <h3>{{ user.email }}</h3>
+<div style="display: flex; flex-direction: column">
+  <div class="home-container">
+    <nav>
+      <div>
+        <div class="avatar-container" (click)="openLogout()">
+          <img [src]="user.image" alt="avatar" class="avatar" />
+          <div class="user-container">
+            <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+            <h3>{{ user.email }}</h3>
+          </div>
+        </div>
+        <div *ngIf="open" class="user-menu">
+          <button class="log-btn" (click)="logOut()">logout</button>
         </div>
       </div>
-      <div *ngIf="open" class="user-menu">
-        <button class="log-btn" (click)="logOut()">logout</button>
-      </div>
-    </div>
-    <ul>
-      <li routerLink="overview" routerLinkActive="is-active">Overview</li>
-      <li routerLink="active" routerLinkActive="is-active">Active</li>
-    </ul>
-  </nav>
-  <main><router-outlet></router-outlet></main>
+      <ul>
+        <li routerLink="overview" routerLinkActive="is-active">Overview</li>
+        <li routerLink="active" routerLinkActive="is-active">Active</li>
+      </ul>
+    </nav>
+    <main><router-outlet></router-outlet></main>
+  </div>
 </div>

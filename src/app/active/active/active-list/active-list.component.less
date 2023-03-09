@@ -3,7 +3,8 @@
   flex-direction: column;
   gap: 15px;
   width: 280px;
-  height: 20rem;
+
+  height: 90%;
 }
 .todo-container-low {
   .todo-container();
@@ -17,7 +18,9 @@
 .todo-main {
   display: flex;
   gap: 5px;
-  overflow-y: scroll;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: auto;
 }
 
 ::-webkit-scrollbar {

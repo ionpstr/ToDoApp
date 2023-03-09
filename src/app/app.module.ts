@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { LoggerService } from './login/logger.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoggedGuardService } from './guards/logged-guard.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +16,13 @@ export const API_URL = 'https://dummyjson.com';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     LoggerService,
     AuthGuardService,

@@ -37,16 +37,21 @@ h3 {
 .home-container {
   display: flex;
   gap: 10px;
-  height: 100%;
+  padding: 0 10px;
+  height: 900px;
 }
-
+@media only screen and (max-width: 1410px) {
+  .home-container {
+    flex-direction: column;
+  }
+}
 .user-menu {
   width: 150px;
   padding: 10px;
   border-radius: 5px;
   background-color: rgb(173, 191, 255);
   position: absolute;
-  top: 70px;
+  top: 85px;
 }
 
 .log-btn {
@@ -62,7 +67,7 @@ h3 {
 nav {
   background-color: rgb(211, 222, 255);
   padding: 15px;
-  height: 100%;
+  align-self: normal;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

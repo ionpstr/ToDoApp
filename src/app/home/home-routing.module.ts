@@ -12,6 +12,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../active/active.module').then((m) => m.ActiveModule),
       },
+      {
+        path: 'overview',
+        loadChildren: () =>
+          import('../overview/overview.module').then((m) => m.OverviewModule),
+      },
     ],
   },
 ];

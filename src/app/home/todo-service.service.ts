@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { LoggerService } from '../login/logger.service';
-import { map, Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { Item } from '../models/item.model';
 @Injectable()
 export class TodoServiceService {
@@ -10,23 +10,19 @@ export class TodoServiceService {
     private http: HttpClient,
     @Inject('API_URL') private api_url: string
   ) {}
-
-  getAllTodos(): Observable<Item[]> {
-    const id = this.logger.getUser.id;
-    const query = `/todos/user/${id}`;
-    const url = this.api_url + query;
-    return this.http.get<any>(url).pipe(map((item) => item.todos));
-  }
+  items: Subject<Item[]> = new BehaviorSubject(
+    JSON.parse(localStorage.getItem('items') as string)
+  );
 
   setTasks(items: Item[]): void {
     localStorage.setItem('items', JSON.stringify([...items]));
+    this.items.next([...items]);
   }
-  getTasks(): Item[] {
-    let items = [];
+  getTasks(): Observable<Item[]> {
     if (localStorage.getItem('items')) {
-      items = JSON.parse(localStorage.getItem('items') as string);
+      this.items.next(JSON.parse(localStorage.getItem('items') as string));
     }
-    return items;
+    return this.items;
   }
   deleteTasks() {
     localStorage.removeItem('items');

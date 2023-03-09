@@ -29,7 +29,7 @@ export class ActiveInputComponent {
   constructor(private fb: FormBuilder) {
     this.myForm = this.fb.group({
       todo: [this.clearItem.todo, Validators.required],
-      date: [this.clearItem.date],
+      date: [this.clearItem.date, Validators.required],
       from: [this.clearItem.from],
       to: [this.clearItem.to],
       priority: [this.clearItem.priority, Validators.required],
@@ -42,11 +42,13 @@ export class ActiveInputComponent {
   updateForm(myForm: FormGroup, item: Item) {
     let d = null;
 
-    if (item.date) {
+    if (item.date != null) {
+      item.date = new Date(item.date);
+
       d = {
-        year: item?.date?.getFullYear(),
-        month: item?.date?.getMonth(),
-        day: item?.date?.getDay(),
+        year: item.date.getFullYear(),
+        month: item.date.getMonth() + 1,
+        day: item.date.getDate(),
       };
     }
 
@@ -61,9 +63,11 @@ export class ActiveInputComponent {
 
   handleSubmit(val: FormGroup) {
     const date =
-      val.value.date != null
+      val.controls['date'].value != null
         ? new Date(
-            `${val.value.date.year}-${val.value.date.month}-${val.value.date.day}`
+            parseInt(val.value.date.year),
+            parseInt(val.value.date.month) - 1,
+            parseInt(val.value.date.day)
           )
         : null;
 
