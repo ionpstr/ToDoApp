@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -25,7 +25,9 @@ export class LoggerService {
       JSON.parse(localStorage.getItem('user') || JSON.stringify(this.userObj))
     );
   }
-
+  public userIsAtuth(): Observable<User> {
+    return this.user.asObservable();
+  }
   public get getUser(): User {
     return this.user.getValue();
   }
@@ -76,6 +78,7 @@ export class LoggerService {
 
   logOut() {
     this.user.next(this.userObj);
+    this.user.complete();
     localStorage.clear();
     this.router.navigate(['login', 'signin']);
   }

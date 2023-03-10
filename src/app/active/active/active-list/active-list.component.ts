@@ -14,17 +14,19 @@ export class ActiveListComponent {
   itemHigh: Item[] = [];
   completed: Item[] = [];
 
-  @Input() set arr(arr: Item[]) {
-    this.itemLow = arr.filter(
-      (val) => val.priority === Priority.low && !val.completed
-    );
-    this.itemMedium = arr.filter(
-      (val) => val.priority === Priority.medium && !val.completed
-    );
-    this.itemHigh = arr.filter(
-      (val) => val.priority === Priority.high && !val.completed
-    );
-    this.completed = arr.filter((val) => val.completed);
+  @Input() set arr(arr: Item[] | null) {
+    if (arr) {
+      this.itemLow = arr.filter(
+        (val) => val.priority === Priority.low && !val.completed
+      );
+      this.itemMedium = arr.filter(
+        (val) => val.priority === Priority.medium && !val.completed
+      );
+      this.itemHigh = arr.filter(
+        (val) => val.priority === Priority.high && !val.completed
+      );
+      this.completed = arr.filter((val) => val.completed);
+    }
   }
   @Output() updateElement: EventEmitter<Item> = new EventEmitter();
   @Output() deleteElement: EventEmitter<Item> = new EventEmitter();

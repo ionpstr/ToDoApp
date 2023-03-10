@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { TodoServiceService } from '../home/todo-service.service';
 import { Item } from '../models/item.model';
 @Injectable({
   providedIn: 'root',
 })
 export class ChartServiceService {
-  items: Item[] = [];
-  sub: Subscription;
+  gridData: Observable<any>;
+  pieData: Observable<any>;
+  timeData: Observable<any>;
   constructor(taskService: TodoServiceService) {
-    this.sub = taskService.getTasks().subscribe((val) => (this.items = val));
+    this.gridData = taskService
+      .getTasks()
+      .pipe(map((val) => this.getPieGridData(val)));
+    this.pieData = taskService
+      .getTasks()
+      .pipe(map((val) => this.getBarHorData(val)));
+    this.timeData = taskService
+      .getTasks()
+      .pipe(map((val) => this.getTimeData(val)));
   }
 
-  getPieGridData() {
+  getPieGridData(items: Item[]) {
     const month = new Date();
     let activeTasks = 0;
     let completedTasks = 0;
-    for (let item of this.items) {
+    for (let item of items) {
       if (item.date != null) {
         item.date = new Date(item.date);
       }
@@ -41,12 +50,12 @@ export class ChartServiceService {
     ];
   }
 
-  getBarHorData() {
+  getBarHorData(items: Item[]) {
     const month = new Date();
 
     let activeTasks = 0;
     let completedTasks = 0;
-    for (let item of this.items) {
+    for (let item of items) {
       if (month.getMonth() === item.date?.getMonth()) {
         if (item.completed) {
           ++completedTasks;
@@ -72,14 +81,14 @@ export class ChartServiceService {
     ];
   }
 
-  getTimeData() {
+  getTimeData(items: Item[]) {
     const month = new Date();
     let hours = 0;
     let days = 0;
     let h = 0;
     let m = 0;
     let daysMap = new Map();
-    for (let item of this.items) {
+    for (let item of items) {
       if (item.date != null) {
         const date = new Date(item.date);
         if (date.getMonth() === month.getMonth()) {
@@ -107,9 +116,5 @@ export class ChartServiceService {
         value: hours.toFixed(2),
       },
     ];
-  }
-
-  onDestroy() {
-    this.sub.unsubscribe();
   }
 }

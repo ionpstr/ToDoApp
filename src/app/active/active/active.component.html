@@ -7,7 +7,7 @@
     <hr style="opacity: 0.2" />
   </div>
   <app-active-list
-    [arr]="items"
+    [arr]="items | async"
     (updateElement)="updateElement($event)"
     (deleteElement)="deleteElement($event)"
     (editElement)="editElement($event)"

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, tap } from 'rxjs';
 import { ChartServiceService } from '../chart-service.service';
 
 @Component({
@@ -7,15 +8,14 @@ import { ChartServiceService } from '../chart-service.service';
   styleUrls: ['./overview.component.less'],
 })
 export class OverviewComponent {
-  single: any;
-  multi: any;
-  singleTime: any;
+  single: Observable<any>;
+  multi: Observable<any>;
+  singleTime: Observable<any>;
   constructor(private chart: ChartServiceService) {
-    this.single = this.chart.getPieGridData();
-    this.multi = this.chart.getBarHorData();
-    this.singleTime = this.chart.getTimeData();
+    this.single = this.chart.gridData;
+    this.multi = this.chart.pieData;
+    this.singleTime = this.chart.timeData;
   }
-
   view: [number, number] = [300, 300];
   viewBar: [number, number] = [380, 150];
   colorScheme: any = { domain: ['#5AA454', '#E44D25'] };

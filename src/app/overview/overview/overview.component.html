@@ -1,16 +1,16 @@
 <div class="chart-container">
   <ngx-charts-pie-grid
+    *ngIf="single | async as pieData"
     [view]="view"
     [scheme]="colorScheme"
-    [results]="single"
-    *ngIf="single"
+    [results]="pieData"
   >
   </ngx-charts-pie-grid>
   <ngx-charts-bar-horizontal-normalized
-    *ngIf="multi"
+    *ngIf="multi | async as barData"
     [view]="viewBar"
     [scheme]="colorSchemeBar"
-    [results]="multi"
+    [results]="barData"
     [gradient]="gradient"
     [xAxis]="showXAxis"
     [yAxis]="showYAxis"
@@ -23,10 +23,10 @@
 </div>
 <div class="time-container">
   <ngx-charts-number-card
-    *ngIf="singleTime"
+    *ngIf="singleTime | async as timeData"
     [view]="view"
     [scheme]="colorSchemeTime"
-    [results]="singleTime"
+    [results]="timeData"
     [cardColor]="cardColor"
   >
   </ngx-charts-number-card>
