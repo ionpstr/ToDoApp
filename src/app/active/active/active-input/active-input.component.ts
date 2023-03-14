@@ -10,7 +10,7 @@ import { Priority } from 'src/app/models/priority.model';
 })
 export class ActiveInputComponent {
   myForm: FormGroup;
-  edit: boolean = false;
+  edit = false;
   clearItem: Item = {
     todo: '',
     date: null,

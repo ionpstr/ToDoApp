@@ -67,7 +67,7 @@ export class TodoServiceService {
     ];
     this.deletedTasks = this.deletedTasks.filter((item) => {
       if (item.createdAt) {
-        let d = new Date(item.createdAt);
+        const d = new Date(item.createdAt);
         return date.getTime() - d.getTime() <= 2628000000;
       } else {
         return false;

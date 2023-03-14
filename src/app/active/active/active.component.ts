@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { LoggerService } from 'src/app/login/logger.service';
 import { TodoServiceService } from 'src/app/home/todo-service.service';
-import { Observable, map, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-active',

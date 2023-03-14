@@ -30,9 +30,9 @@
         [todo]="todo"
         draggable
         [dragData]="todo"
-        (onComplete)="handleComplete(todo)"
-        (onDelete)="handleDelete(todo)"
-        (onEdit)="handleEdit(todo)"
+        (Complete)="handleComplete(todo)"
+        (Delete)="handleDelete(todo)"
+        (Edit)="handleEdit(todo)"
         appTaskColor
         [priority]="todo.priority ? todo.priority : null"
       ></app-todo>
@@ -75,9 +75,9 @@
         [todo]="todo"
         draggable
         [dragData]="todo"
-        (onComplete)="handleComplete(todo)"
-        (onDelete)="handleDelete(todo)"
-        (onEdit)="handleEdit(todo)"
+        (Complete)="handleComplete(todo)"
+        (Delete)="handleDelete(todo)"
+        (Edit)="handleEdit(todo)"
         appTaskColor
         [priority]="todo.priority ? todo.priority : null"
       ></app-todo>
@@ -114,9 +114,9 @@
         [todo]="todo"
         draggable
         [dragData]="todo"
-        (onComplete)="handleComplete(todo)"
-        (onDelete)="handleDelete(todo)"
-        (onEdit)="handleEdit(todo)"
+        (Complete)="handleComplete(todo)"
+        (Delete)="handleDelete(todo)"
+        (Edit)="handleEdit(todo)"
         appTaskColor
         [priority]="todo.priority ? todo.priority : null"
       ></app-todo>
@@ -153,9 +153,9 @@
       <app-todo
         *ngFor="let todo of completed"
         [todo]="todo"
-        (onComplete)="handleComplete(todo)"
-        (onDelete)="handleDelete(todo)"
-        (onEdit)="handleEdit(todo)"
+        (Complete)="handleComplete(todo)"
+        (Delete)="handleDelete(todo)"
+        (Edit)="handleEdit(todo)"
       ></app-todo>
     </div>
   </div>

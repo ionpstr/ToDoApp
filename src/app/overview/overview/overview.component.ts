@@ -21,12 +21,12 @@ export class OverviewComponent {
   colorScheme: any = { domain: ['#5AA454', '#E44D25'] };
   colorSchemeBar: any = { domain: ['#7aa3e5', '#aae3f5'] };
   colorSchemeTime: any = { domain: ['#1491ff', '#ff6a14'] };
-  showXAxis: boolean = true;
-  showYAxis: boolean = true;
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showXAxisLabel: boolean = true;
-  showYAxisLabel: boolean = true;
-  xAxisLabel: string = 'Proportion of done tasks';
-  cardColor: string = '#23283';
+  showXAxis = true;
+  showYAxis = true;
+  gradient = true;
+  showLegend = true;
+  showXAxisLabel = true;
+  showYAxisLabel = true;
+  xAxisLabel = 'Proportion of done tasks';
+  cardColor = '#23283';
 }

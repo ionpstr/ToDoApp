@@ -7,16 +7,16 @@ import { Item } from 'src/app/models/item.model';
 })
 export class TodoComponent {
   @Input() todo!: Item;
-  @Output() onComplete: EventEmitter<void> = new EventEmitter();
-  @Output() onEdit: EventEmitter<void> = new EventEmitter();
-  @Output() onDelete: EventEmitter<void> = new EventEmitter();
+  @Output() Complete: EventEmitter<void> = new EventEmitter();
+  @Output() Edit: EventEmitter<void> = new EventEmitter();
+  @Output() Delete: EventEmitter<void> = new EventEmitter();
   completeTask() {
-    this.onComplete.emit();
+    this.Complete.emit();
   }
   editTask() {
-    this.onEdit.emit();
+    this.Edit.emit();
   }
   deleteTask() {
-    this.onDelete.emit();
+    this.Delete.emit();
   }
 }

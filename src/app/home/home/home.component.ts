@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user.model';
 })
 export class HomeComponent {
   user: User;
-  open: boolean = false;
+  open = false;
   constructor(private logger: LoggerService) {
     this.user = logger.getUser;
   }

@@ -25,7 +25,7 @@ export class ChartServiceService {
     const month = new Date();
     let activeTasks = 0;
     let completedTasks = 0;
-    for (let item of items) {
+    for (const item of items) {
       if (item.date != null) {
         item.date = new Date(item.date);
       }
@@ -55,7 +55,7 @@ export class ChartServiceService {
 
     let activeTasks = 0;
     let completedTasks = 0;
-    for (let item of items) {
+    for (const item of items) {
       if (month.getMonth() === item.date?.getMonth()) {
         if (item.completed) {
           ++completedTasks;
@@ -87,8 +87,8 @@ export class ChartServiceService {
     let days = 0;
     let h = 0;
     let m = 0;
-    let daysMap = new Map();
-    for (let item of items) {
+    const daysMap = new Map();
+    for (const item of items) {
       if (item.date != null) {
         const date = new Date(item.date);
         if (date.getMonth() === month.getMonth()) {

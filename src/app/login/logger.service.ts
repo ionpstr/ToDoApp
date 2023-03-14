@@ -36,14 +36,14 @@ export class LoggerService {
     return JSON.parse(localStorage.getItem('token') || '');
   }
 
-  login(body: {}) {
+  login(body: any) {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     const url = `${api_url}auth/login`;
     return this.http.post(url, body, httpOptions).pipe(
       map((user: any) => {
-        let u = {
+        const u = {
           firstName: user.firstName,
           id: user.id,
           lastName: user.lastName,
@@ -60,7 +60,7 @@ export class LoggerService {
     );
   }
 
-  signUp(body: {}) {
+  signUp(body: any) {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
